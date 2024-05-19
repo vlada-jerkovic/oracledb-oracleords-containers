@@ -18,7 +18,7 @@ Podman is available under the Apache 2.0 license, **allowing for free use, modif
 
 ## 1. Install Docker
 ### Windows
-[Follow instruction](https://docs.docker.com/desktop/install/windows-install/)
+[Follow instruction](https://docs.docker.com/desktop/install/windows-install/) (right-click the link and select "Open link in new tab")
 ### Ubuntu
 ```
 apt install docker.io -y
@@ -26,7 +26,7 @@ apt install docker.io -y
 
 
 ## 2. Download images
-[Oracle Database Repositories](https://container-registry.oracle.com/ords/f?p=113:1:116196358659656:::1:P1_BUSINESS_AREA:3&cs=3OlLCFzurx_PVLduhJyeBvvMrKA29Xie8NeRG36foMcW9iXFyRZ4nSSgDIVs6MBDUBdB1IvAWM59-zWPN7LpnlQ)
+[Oracle Database Repositories](https://container-registry.oracle.com/ords/f?p=113:1:116196358659656:::1:P1_BUSINESS_AREA:3&cs=3OlLCFzurx_PVLduhJyeBvvMrKA29Xie8NeRG36foMcW9iXFyRZ4nSSgDIVs6MBDUBdB1IvAWM59-zWPN7LpnlQ) (right-click the link and select "Open link in new tab")
 - database/free contains **only** Oracle database
 - database/ords contains **only** APEX + ORDS
 ```
@@ -139,7 +139,7 @@ docker stop apexords
 APEX will be installed, and REST services will be activated. The configurations will be stored in the volume, so the container can be stopped/started later with docker start/stop ords, retaining the configuration.
 
 Initial data for the installation of APEX with ORDS:
-[http://localhost:8181](http://localhost:8181)
+[http://localhost:8181](http://localhost:8181) (right-click the link and select "Open link in new tab")
 - Workspace: internal
 - User:      ADMIN
 - Password:  Welcome_1
@@ -147,7 +147,7 @@ Initial data for the installation of APEX with ORDS:
 
 ## Confirmation of ORDS Installed 
 
-Open [Oracle SQL Developer](https://planetone.online/downloads/oracle/) and connect to freepdb1
+Open [Oracle SQL Developer](https://planetone.online/downloads/oracle/) (right-click the link and select "Open link in new tab") and connect to freepdb1 
 
 - Connection name: **oracle-db-system**
 - Hostname: **localhost**
@@ -181,7 +181,7 @@ In Oracle SQL Developer create new connection
 
 
 ### Testing Login APEX with ORDS:
-[http://localhost:8181](http://localhost:8181)
+[http://localhost:8181](http://localhost:8181) (right-click the link and select "Open link in new tab")
 - Workspace: **ProjectName** e.g. (UsersOnMap)
 - User:      **ProjectUserName** e.g. (admin)
 - Password:  **APEXStrongPassword_1**
