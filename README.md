@@ -115,9 +115,9 @@ $ConnString | Out-File -FilePath $FilePathConnString -Encoding utf8 -NoNewline
 ```
 
 If you create from Command Prompt (cmd.exe) it will create Windows (CR LF) UTF8 file. **IMPORTANT: This file must be converted to Unix (LF)**. 
-- Open file C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt in [**Notepad++**](https://notepad-plus-plus.org/downloads/)
-- Right-click over **Windows (CR LF)** and select **Unix (LF)**
-- Save the file
+* Open file C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt in [**Notepad++**](https://notepad-plus-plus.org/downloads/)
+* Right-click over **Windows (CR LF)** and select **Unix (LF)**
+* Save the file
 
 ![UnixLF](assets/notepadplusplus-convertToUnixLF.JPG)
 
