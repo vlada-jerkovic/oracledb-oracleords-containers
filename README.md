@@ -26,6 +26,7 @@ apt install docker.io -y
 
 
 ## 2. Download images
+[Oracle Database Repositories](https://container-registry.oracle.com/ords/f?p=113:1:116196358659656:::1:P1_BUSINESS_AREA:3&cs=3OlLCFzurx_PVLduhJyeBvvMrKA29Xie8NeRG36foMcW9iXFyRZ4nSSgDIVs6MBDUBdB1IvAWM59-zWPN7LpnlQ)
 - database/free contains **only** Oracle database
 - database/ords contains **only** APEX + ORDS
 ```
