@@ -52,7 +52,12 @@ docker run `
   -v C:\Docker\volume\oracle-db\db-data:/opt/oracle/oradata `
   container-registry.oracle.com/database/free:latest
 ```
+Completing all processes related to the database takes more than 30 minutes. Below are the results of the **mkdir** and **docker run** commands. All data is stored on your local machine, ensuring the database persists across docker container sessions/restarts of server...
 
+![Docker Run Results](assets/docker_run_oracledb.JPG)
+
+SQL Developer connection system
+![SQL Developer connection](assets/SQLDeveloperConnectionSystem.JPG)
 
 ### Ubuntu bash multiline command
 ```
