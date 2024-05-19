@@ -88,6 +88,7 @@ docker network ls
 docker network inspect <network id>
 ```
 Result IP: (172.17.0.2)
+![Result IP](assets/oracledb-containet-ip.JPG)
 
 ### 4.2. Create config for APEX+ORDS installation (it must be user **SYS**)
 
