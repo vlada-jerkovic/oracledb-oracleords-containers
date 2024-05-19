@@ -64,6 +64,20 @@ docker run `
 - User:      ADMIN
 - Password:  Welcome_1
 
+
+7. Confirmation of ORDS Installed 
+
+Open [Oracle SQL Developer](https://planetone.online/downloads/oracle/) (right-click the link and select "Open link in new tab") and connect to freepdb1 
+
+- Connection name: **oracle-db-system**
+- Hostname: **localhost**
+- Username: **system**
+- Password: **Str0ngP4ssw0rd**
+- Port: 1521
+- Service name: **freepdb1**
+
+It appears: **REST Data Services**
+![SQLDeveloperRESTDataServicesConnectionSystem](assets/SQLDeveloperRESTDataServicesConnectionSystem.JPG)
 ## Long story
 
 ### [**Docker**](https://docs.docker.com/get-docker/) Licenses
