@@ -26,6 +26,12 @@ docker run `
 3. Obtain IP of oracledb container
 We want "bridge network id" and this IP will be used for connection string
 ```
+$containerName = "oracledb23.4.0.0"
+$ipAddress = docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $containerName
+Write-Output $ipAddress
+```
+Result IP: (172.17.0.2)
+```
 docker network ls
 docker network inspect <network id>
 ```
