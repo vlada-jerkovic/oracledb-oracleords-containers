@@ -97,9 +97,33 @@ Result IP: (172.17.0.2)
 mkdir C:\Docker\volume\apex-ords\ords_config
 mkdir C:\Docker\volume\apex-ords\ords_secrets
 ```
-Create connection string file used for establishing connection from apexords containter to oracle database container. (Client server concept)
+Create a connection string file to facilitate communication between the APEX ORDS container and the Oracle database container, implementing a client-server architecture.
+
+Explanation:
+- Out-File: Directs the string to a file
+- FilePath: Specifies the path to the file
+- Encoding utf8: Sets the encoding to UTF-8
+- NoNewline: **Ensures Unix (LF) line endings**
+
+PowerShell
 ```
-ECHO "CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1" > C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
+$ConnString = "CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1"
+$FilePathConnString = "C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt"
+
+# Create the file with UTF-8 encoding and Unix line endings
+$ConnString | Out-File -FilePath $FilePathConnString -Encoding utf8 -NoNewline
+```
+
+If you create from Command Prompt (cmd.exe) it will create Windows (CR LF) UTF8 file. **IMPORTANT: This file must be converted to Unix (LF)**. 
+- Open file C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt in [**Notepad++**](https://notepad-plus-plus.org/downloads/)
+- Right-click over **Windows (CR LF)** and select **Unix (LF)**
+- Save the file
+
+![UnixLF](assets/notepadplusplus-convertToUnixLF.JPG)
+
+Command Prompt (cmd.exe)
+```
+echo CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1 > C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
 ```
 
 #### **Ubuntu** create Volumes folders for APEX+ORDS container
