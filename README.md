@@ -57,7 +57,10 @@ docker run `
   --cpus 4 `
   container-registry.oracle.com/database/ords:latest
 ```
-
+6. Login to APEX [http://localhost:8181](http://localhost:8181) (right-click the link and select "Open link in new tab")
+- Workspace: internal
+- User:      ADMIN
+- Password:  Welcome_1
 
 ## Long story
 
