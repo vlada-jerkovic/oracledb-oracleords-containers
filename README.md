@@ -3,15 +3,72 @@
 ## Introduction
 Creating independent containers for different components of an application enhances scalability and simplifies maintenance. This modular approach allows for easier identification and resolution of issues, as well as targeted restarts of problematic containers without affecting the entire system.
 
-## Licenses
-### [**Docker**](https://docs.docker.com/get-docker/)
+## Long story short
+1. Download containers images - Windows PowerShell
+```
+docker pull container-registry.oracle.com/database/free:latest
+docker pull container-registry.oracle.com/database/ords:latest
+```
+2. Run oracle-db container with volume for persistant data - Windows PowerShell multiline command
+```
+mkdir C:\Docker\volume\oracle-db\db-data\
+docker run `
+  --name oracledb23.4.0.0 `
+  --restart unless-stopped `
+  -p 1521:1521 `
+  -p 5500:5500 `
+  -e ORACLE_PWD=Str0ngP4ssw0rd `
+  --memory 8g `
+  --cpus 4 `
+  -v C:\Docker\volume\oracle-db\db-data:/opt/oracle/oradata `
+  container-registry.oracle.com/database/free:latest
+```
+3. Obtain IP of oracledb container
+We want "bridge network id" and this IP will be used for connection string
+```
+docker network ls
+docker network inspect <network id>
+```
+Result IP: (172.17.0.2)
+
+4. Create connection string based on the IP from oracle-db container. 
+Create from **Command Prompt (cmd.exe)** Windows (CR LF) UTF8 file. **IMPORTANT: This file must be converted to Unix (LF)**.
+
+Command Prompt (cmd.exe)
+```
+echo CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1> C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
+```
+- Open file C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt in [**Notepad++**](https://notepad-plus-plus.org/downloads/)
+- Right-click over **Windows (CR LF)** and select **Unix (LF)**
+- Save the file
+
+![UnixLF](assets/notepadplusplus-convertToUnixLF.JPG)
+
+
+5. Run oracle-apex-ords container - **Windows** PowerShell multiline command
+```
+docker run `
+  --name oracle-apex-ords `
+  --restart unless-stopped `
+  -v C:\Docker\volume\apex-ords\ords_secrets:/opt/oracle/variables `
+  -v C:\Docker\volume\apex-ords\ords_config:/etc/ords/config/ `
+  -p 8181:8181 `
+  --memory 4g `
+  --cpus 4 `
+  container-registry.oracle.com/database/ords:latest
+```
+
+
+## Long story
+
+### [**Docker**](https://docs.docker.com/get-docker/) Licenses
 #### Docker Desktop License
 Docker Desktop is free for personal use, education, and small businesses (**fewer than 250 employees and less than $10 million in annual revenue**). For larger enterprises, a paid subscription is required.
 
 #### Docker Engine License
 Docker Engine is open-source and available under the Apache 2.0 license, which allows for free use, modification, and distribution.
 
-### [**Podman**](https://podman.io/)
+### [**Podman**](https://podman.io/) Licenses
 #### Podman License
 Podman is an alternative to Docker that offers similar functionality with a focus on security and daemonless architecture. Podman is part of the open-source container tools suite provided by Red Hat.
 Podman is available under the Apache 2.0 license, **allowing for free use, modification, and distribution**.
@@ -25,7 +82,7 @@ apt install docker.io -y
 ```
 
 
-## 2. Download images
+## 2. [Download images](#download-images)
 [Oracle Database Repositories](https://container-registry.oracle.com/ords/f?p=113:1:116196358659656:::1:P1_BUSINESS_AREA:3&cs=3OlLCFzurx_PVLduhJyeBvvMrKA29Xie8NeRG36foMcW9iXFyRZ4nSSgDIVs6MBDUBdB1IvAWM59-zWPN7LpnlQ) (right-click the link and select "Open link in new tab")
 - database/free contains **only** Oracle database
 - database/ords contains **only** APEX + ORDS
@@ -99,31 +156,16 @@ mkdir C:\Docker\volume\apex-ords\ords_secrets
 ```
 Create a connection string file to facilitate communication between the APEX ORDS container and the Oracle database container, implementing a client-server architecture.
 
-Explanation:
-- Out-File: Directs the string to a file
-- FilePath: Specifies the path to the file
-- Encoding utf8: Sets the encoding to UTF-8
-- NoNewline: **Ensures Unix (LF) line endings**
-
-PowerShell
-```
-$ConnString = "CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1"
-$FilePathConnString = "C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt"
-
-# Create the file with UTF-8 encoding and Unix line endings
-$ConnString | Out-File -FilePath $FilePathConnString -Encoding utf8 -NoNewline
-```
-
-If you create from Command Prompt (cmd.exe) it will create Windows (CR LF) UTF8 file. **IMPORTANT: This file must be converted to Unix (LF)**. 
-* Open file C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt in [**Notepad++**](https://notepad-plus-plus.org/downloads/)
-* Right-click over **Windows (CR LF)** and select **Unix (LF)**
-* Save the file
+Create from **Command Prompt (cmd.exe)** Windows (CR LF) UTF8 file. **IMPORTANT: This file must be converted to Unix (LF)**. 
+- Open file C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt in [**Notepad++**](https://notepad-plus-plus.org/downloads/)
+- Right-click over **Windows (CR LF)** and select **Unix (LF)**
+- Save the file
 
 ![UnixLF](assets/notepadplusplus-convertToUnixLF.JPG)
 
 Command Prompt (cmd.exe)
 ```
-echo CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1 > C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
+echo CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1> C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
 ```
 
 #### **Ubuntu** create Volumes folders for APEX+ORDS container
@@ -139,7 +181,7 @@ echo 'CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1' > /mnt/docker/ape
 #### **Windows** PowerShell multiline command
 ```
 docker run `
-  --name apexords `
+  --name oracle-apex-ords `
   --restart unless-stopped `
   -v C:\Docker\volume\apex-ords\ords_secrets:/opt/oracle/variables `
   -v C:\Docker\volume\apex-ords\ords_config:/etc/ords/config/ `
@@ -151,7 +193,7 @@ docker run `
 #### **Ubuntu** bash multiline command
 ```
 docker run \
-  --name apexords \
+  --name oracle-apex-ords \
   --restart unless-stopped \
   -v /mnt/docker/apex-ords/ords_secrets:/opt/oracle/variables \
   -v /mnt/docker/apex-ords/ords_config:/etc/ords/config/ \
@@ -162,8 +204,8 @@ docker run \
 ```
 You can start/stop Oracle APEX+ORDS container
 ```
-docker start apexords
-docker stop apexords
+docker start oracle-apex-ords
+docker stop oracle-apex-ords
 ```
 
 APEX will be installed, and REST services will be activated. The configurations will be stored in the volume, so the container can be stopped/started later with docker start/stop ords, retaining the configuration.
