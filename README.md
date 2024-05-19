@@ -32,6 +32,9 @@ apt install docker.io -y
 docker pull container-registry.oracle.com/database/free:latest
 docker pull container-registry.oracle.com/database/ords:latest
 ```
+Here are the results of the Docker pull commands:
+
+![Docker Pull Results](assets/docker_pull_results.JPG)
 ## 3. Run Oracle DB container
 ### Windows PowerShell multiline command
 ```
