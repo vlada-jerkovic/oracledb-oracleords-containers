@@ -118,8 +118,8 @@ docker pull container-registry.oracle.com/database/ords:latest
 Here are the results of the Docker pull commands:
 
 ![Docker Pull Results](assets/docker_pull_results.JPG)
-## 3. Run Oracle DB container
-### Windows PowerShell multiline command
+## 3. Run oracle-db container with volume for persistant data - Windows PowerShell multiline command
+Windows PowerShell multiline command
 ```
 mkdir C:\Docker\volume\oracle-db\db-data\
 
@@ -141,7 +141,7 @@ Completing all processes related to the database takes more than 30 minutes. Bel
 SQL Developer connection system
 ![SQL Developer connection](assets/SQLDeveloperConnectionSystem.JPG)
 
-### Ubuntu bash multiline command
+Ubuntu bash multiline command
 ```
 mkdir /mnt/docker/oracle-db/db-data/
 
@@ -203,7 +203,7 @@ Create connection string file used for establishing connection from apexords con
 echo 'CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1' > /mnt/docker/apex-ords/ords_secrets/conn_string.txt
 ```
 ### 4.3. Run APEX+ORDS container
-#### **Windows** PowerShell multiline command
+**Windows** PowerShell multiline command
 ```
 docker run `
   --name oracle-apex-ords `
@@ -215,7 +215,7 @@ docker run `
   --cpus 4 `
   container-registry.oracle.com/database/ords:latest
 ```
-#### **Ubuntu** bash multiline command
+**Ubuntu** bash multiline command
 ```
 docker run \
   --name oracle-apex-ords \
