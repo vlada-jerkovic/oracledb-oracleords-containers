@@ -118,7 +118,7 @@ docker pull container-registry.oracle.com/database/ords:latest
 Here are the results of the Docker pull commands:
 
 ![Docker Pull Results](assets/docker_pull_results.JPG)
-## 3. Run oracle-db container with volume for persistant data - Windows PowerShell multiline command
+## 3. Run oracle-db container with volume for persistant data
 Windows PowerShell multiline command
 ```
 mkdir C:\Docker\volume\oracle-db\db-data\
@@ -271,7 +271,7 @@ It appears: **REST Data Services**
 In Oracle SQL Developer create new connection
 - Connection name: **ProjectName** e.g. (UsersOnMap)
 - Hostname: **localhost**
-- Username: **ProjectUserName** e.g. (admin)
+- Username: **ProjectUserName** e.g. (UsersOnMap)
 - Password: **DatabaseStrongPassword_1**
 - Port: 1521
 - Service name: **freepdb1**
