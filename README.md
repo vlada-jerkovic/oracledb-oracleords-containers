@@ -66,9 +66,9 @@ docker run `
   container-registry.oracle.com/database/ords:latest
 ```
 6. Login to APEX [http://localhost:8181](http://localhost:8181) (right-click the link and select "Open link in new tab")
-- Workspace: internal
-- User:      ADMIN
-- Password:  Welcome_1
+- Workspace: **internal**
+- User:      **ADMIN**
+- Password:  **Welcome_1** (It will ask to change password in next step)
 
 
 7. Confirmation of ORDS Installed 
@@ -237,9 +237,9 @@ APEX will be installed, and REST services will be activated. The configurations 
 
 Initial data for the installation of APEX with ORDS:
 [http://localhost:8181](http://localhost:8181) (right-click the link and select "Open link in new tab")
-- Workspace: internal
-- User:      ADMIN
-- Password:  Welcome_1
+- Workspace: **internal**
+- User:      **ADMIN**
+- Password:  **Welcome_1** (It will ask to change password in next step)
 
 
 ## Confirmation of ORDS Installed 
