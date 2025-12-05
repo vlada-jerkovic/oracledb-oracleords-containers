@@ -44,7 +44,7 @@ Command Prompt (cmd.exe)
 ```
 mkdir C:\Docker\volume\apex-ords\ords_config
 mkdir C:\Docker\volume\apex-ords\ords_secrets
-echo CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1> C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
+echo CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1 > C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
 ```
 - Open file C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt in [**Notepad++**](https://notepad-plus-plus.org/downloads/)
 - Right-click over **Windows (CR LF)** and select **Unix (LF)**
@@ -190,7 +190,7 @@ Create from **Command Prompt (cmd.exe)** Windows (CR LF) UTF8 file. **IMPORTANT:
 
 Command Prompt (cmd.exe)
 ```
-echo CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1> C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
+echo CONN_STRING=sys/Str0ngP4ssw0rd@172.17.0.2:1521/freepdb1 > C:\Docker\volume\apex-ords\ords_secrets\conn_string.txt
 ```
 
 #### **Ubuntu** create Volumes folders for APEX+ORDS container
